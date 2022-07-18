@@ -8,11 +8,5 @@ module.exports = {
     filename: "index_combined.js",
     libraryTarget: "umd",
     path: path.resolve(__dirname, "bin")
-  },
-  devServer: {
-    contentBase: "./",
-    publicPath: "/bin",
-    https: true,
-    port: 9025
   }
 };

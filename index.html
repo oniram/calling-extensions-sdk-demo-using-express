@@ -27,12 +27,21 @@
 
     <script src="https://www.webvoipphone.com/webphone_online_demo/webphone_api.js?jscodeversion=952"></script>
     
-    <script src="https://www.webvoipphone.com/webphone_online_demo/js/click2call/click2call.js?jscodeversion=952"></script>
 
-    
+    <style>
+      .footer {
+        position: fixed;
+        bottom: 0;
+        text-align: center;
+        width: 100%;
+        background-color: rgba(0,0,0,.03);
+        padding: 1%;
+      }
+    </style>
 
     <script>
-        /**Set Configuration parameters*/
+       
+
         webphone_api.parameters['autostart'] = 0;   // start the webphone only when button is clicked
         webphone_api.onAppStateChange(function (state)
         {
@@ -44,40 +53,45 @@
                 
                 webphone_api.setparameter('autoaction', '1');    // 0=nothing (default), 1=call, 2=chat, 3=video call
 
+                webphone_api.setparameter('loglevel', '1');    // 0=nothing (default), 
+
             }
+        });
+        
+        
+        webphone_api.onCallStateChange(function (state) {
+         
+          switch(state){
+            case "connected":
+              document.getElementById("status").textContent = "Chamada em andamento...";
+              break;
+            case "ringing":
+              document.getElementById("status").textContent = "Chamando...";
+              break;
+            case "disconnected":
+              document.getElementById("status").textContent = "Chamada Encerrada";
+              document.getElementById("desligar").style.display = 'none';
+              break;
+          }
+          
         });
     </script>
 
-    <style>
-      .controls {
-        width: 300px;
-        height: 600px;
-      }
-    </style>
   </head>
 
   <body>
-    <span class="controls">
-      <!-- <div>Initialization/Login</div> -->
-      <!-- <input type="button" value="initialized" />
-      <input type="button" value="log in" />
-      <input type="button" value="log out" /> -->
-      <hr />
-      <div>Ações</div>
-      <!-- <input type="button" value="outgoing call started" />
-      <input type="button" value="call answered" /> -->
-      <br />
-      <input type="button" value="Desligar" />
-      <!-- <input type="button" value="call completed" /> -->
-      <hr />
-      <!-- <div>Misc. events</div> -->
-      <!-- <input type="button" value="send error" />
-      <input type="button" value="change size" /> -->
-    </span>
-    <hr />
-    <!-- <div>Incoming Messages</div>
-    <div id="incomingMsgs"></div> -->
+    <div class="card text-center">
+  <h5 class="card-header">Ligando para: <span id="phoneNumber"></span></h5>
+  <div class="card-body">
+    <h5 class="card-title" id="status">Inicializando...</h5>
+    <a href="#" class="btn btn-danger" id="desligar">Desligar</a>
+  </div>
+    
+</div>
 
-    <script src="./bin/index_combined.js" async></script>
+    <script src="./index_combined.js" async></script>
+    <div class="footer">
+    <img src="./logo-reach-102w.webp">
+  </div>
   </body>
 </html>
