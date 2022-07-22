@@ -50,10 +50,9 @@
         {
             if (state === 'loaded')
             {
-                console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> loaded");
-                webphone_api.setparameter('serveraddress', '35.247.222.46'); // yoursipdomain.com your VoIP server IP address or domain name
-                webphone_api.setparameter('username', 'Daniel210');      // SIP account username
-                webphone_api.setparameter('password', '210_1_0');      // SIP account password (see the "Parameters encryption" in the documentation)
+                webphone_api.setparameter('serveraddress', ''); // yoursipdomain.com your VoIP server IP address or domain name
+                webphone_api.setparameter('username', '');      // SIP account username
+                webphone_api.setparameter('password', '');      // SIP account password (see the "Parameters encryption" in the documentation)
                 
                 webphone_api.setparameter('autoaction', '1');    // 0=nothing (default), 1=call, 2=chat, 3=video call
 
@@ -95,7 +94,7 @@
 
     <script src="./index_combined.js" async></script>
     <div class="footer">
-    <img src="./logo-reach-102w.webp">
+    <img src="./logo.png">
   </div>
   </body>
 </html>
