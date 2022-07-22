@@ -37,6 +37,9 @@
         background-color: rgba(0,0,0,.03);
         padding: 1%;
       }
+      body {
+        height: 400px;
+      }
     </style>
 
     <script>
@@ -47,6 +50,7 @@
         {
             if (state === 'loaded')
             {
+                console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> loaded");
                 webphone_api.setparameter('serveraddress', '35.247.222.46'); // yoursipdomain.com your VoIP server IP address or domain name
                 webphone_api.setparameter('username', 'Daniel210');      // SIP account username
                 webphone_api.setparameter('password', '210_1_0');      // SIP account password (see the "Parameters encryption" in the documentation)
